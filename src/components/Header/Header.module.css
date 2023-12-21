@@ -1,6 +1,0 @@
-.container {
-  display: grid;
-  grid-template-columns: minmax(300px, 2fr);
-  justify-content: center;
-  align-items: center;
-}

@@ -1,31 +1,23 @@
-import { FC, lazy } from "react";
-import styles from "components/Header/Header.module.css";
-import { useAppDispatch, useAppSelector } from "app/hooks";
+import { FC, CSSProperties } from "react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
-import { setDarkMode } from "app/reducers/theme";
-import { useThemeSelector } from "app/selectors/theme";
-import { AppDispatch } from "app/store";
+
+import { useColorMode } from "@chakra-ui/react";
 
 const Header: FC = () => {
-  const dispatch: AppDispatch = useAppDispatch();
-  const { darkmode }: { darkmode: boolean } = useThemeSelector();
+  const { colorMode, toggleColorMode } = useColorMode();
 
-  //toggle theme
-  const toggleTheme = () => {
-    import("features/actions").then((module) => {
-      module.handleToggle(dispatch, setDarkMode);
-    });
+  const styles: CSSProperties = {
+    margin: "2vw",
+    cursor: "pointer",
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.theme}>
-        {darkmode ? (
-          <MoonIcon w={8} h={8} onClick={toggleTheme} />
-        ) : (
-          <SunIcon w={8} h={8} onClick={toggleTheme} />
-        )}
-      </div>
+    <div style={styles}>
+      {colorMode === "light" ? (
+        <MoonIcon w={8} h={8} onClick={toggleColorMode} />
+      ) : (
+        <SunIcon w={8} h={8} onClick={toggleColorMode} />
+      )}
     </div>
   );
 };

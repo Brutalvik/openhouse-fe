@@ -1,11 +1,12 @@
 import { FC } from "react";
 import styles from "components/Customspinner/Customspinner.module.css";
+import { Center } from "@chakra-ui/react";
 
 const CustomSpinner: FC = () => {
   return (
-    <div className={styles.loading}>
+    <Center h="100vh">
       <div className={styles.circle}></div>
-    </div>
+    </Center>
   );
 };
 
