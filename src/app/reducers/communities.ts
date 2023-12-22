@@ -6,6 +6,7 @@ const initialState = {
   error: false,
   message: undefined,
   status: undefined,
+  moreInfo: undefined,
 };
 
 const communities = createSlice({
@@ -27,6 +28,9 @@ const communities = createSlice({
       state.message = payload.message;
       state.status = payload.status;
     },
+    communitiesMoreInfo: (state, { payload }: PayloadAction<any>) => {
+      state.moreInfo = payload;
+    },
   },
 });
 
@@ -34,6 +38,7 @@ export const {
   communitiesFetchSuccess,
   communitiesFetchInProgress,
   communitiesFetchFailed,
+  communitiesMoreInfo,
 } = communities.actions;
 
 export default communities.reducer;

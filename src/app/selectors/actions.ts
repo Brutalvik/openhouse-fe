@@ -1,4 +1,4 @@
 import { useAppSelector } from "app/hooks";
 
-export const useActiveTabSelector = () =>
+export const useActionsSelector = () =>
   useAppSelector((state) => state.actions);

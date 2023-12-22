@@ -19,6 +19,8 @@ import { sortByType } from "features/functions";
 import { getHomes } from "app/thunks/getHomes";
 import { useCommunitiesSelector } from "app/selectors/communities";
 import fallbackImage from "assets/noImage.png";
+import { setModalOpen } from "app/reducers/actions";
+import { communitiesMoreInfo } from "app/reducers/communities";
 
 const Homes: FC<CommunitiesInterface> = () => {
   const dispatch = useAppDispatch();
@@ -59,6 +61,8 @@ const Homes: FC<CommunitiesInterface> = () => {
     const community = communities?.data?.find(
       (community) => community.id === communityId
     );
+    dispatch(setModalOpen(true));
+    dispatch(communitiesMoreInfo(community));
     return community;
   };
 
@@ -70,7 +74,7 @@ const Homes: FC<CommunitiesInterface> = () => {
       {sortedHomes?.map(
         ({ id, communityId, price, area, type, imgUrl }: any) => (
           <GridItem key={id}>
-            <Card maxW="sm" variant="elevated">
+            <Card maxW="sm" variant="filled">
               <CardBody>
                 <Image
                   src={brokenImgUrls.includes(imgUrl) ? fallbackImage : imgUrl}

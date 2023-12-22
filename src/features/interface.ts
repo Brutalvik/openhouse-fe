@@ -16,6 +16,7 @@ export interface CommunityInterface {
 
 export interface TabsInterface {
   activeTab: number;
+  isModalOpen?: boolean;
 }
 
 export interface Home {

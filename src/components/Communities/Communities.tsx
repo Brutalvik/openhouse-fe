@@ -95,7 +95,7 @@ const Communities: FC<CommunitiesInterface> = () => {
       {sortedCommunities?.map(
         ({ id, name, imgUrl, group, avgPrice }: CommunityInterface) => (
           <GridItem key={id}>
-            <Card maxW="sm" variant="elevated">
+            <Card maxW="sm" variant="filled">
               <CardBody>
                 <Image
                   src={brokenImgUrls.includes(imgUrl) ? fallbackImage : imgUrl}

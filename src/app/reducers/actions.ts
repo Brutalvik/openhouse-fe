@@ -3,6 +3,7 @@ import { TabsInterface } from "features/interface";
 
 const initialState: TabsInterface = {
   activeTab: 0,
+  isModalOpen: false,
 };
 
 const actions = createSlice({
@@ -12,9 +13,12 @@ const actions = createSlice({
     setActiveTab: (state, { payload }: PayloadAction<number>) => {
       state.activeTab = payload;
     },
+    setModalOpen: (state, { payload }: PayloadAction<boolean>) => {
+      state.isModalOpen = payload;
+    },
   },
 });
 
-export const { setActiveTab } = actions.actions;
+export const { setActiveTab, setModalOpen } = actions.actions;
 
 export default actions.reducer;

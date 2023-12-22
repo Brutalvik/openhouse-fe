@@ -1,10 +1,12 @@
 import { FC, lazy, Suspense } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import CustomSpinner from "components/Customspinner/Customspinner";
+import { useActionsSelector } from "app/selectors/actions";
 
 const Header = lazy(() => import("components/Header/Header"));
 
 const Sections = lazy(() => import("components/Sections/Sections"));
+const MoreInfo = lazy(() => import("components/Moreinfo/Moreinfo"));
 
 const Home: FC = () => {
   return (
@@ -14,8 +16,9 @@ const Home: FC = () => {
           <Header />
         </GridItem>
       </Grid>
-
       <Sections />
+      {/* Modal */}
+      <MoreInfo />
     </Suspense>
   );
 };

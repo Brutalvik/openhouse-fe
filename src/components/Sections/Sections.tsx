@@ -9,7 +9,7 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import { useAppDispatch } from "app/hooks";
-import { useActiveTabSelector } from "app/selectors/actions";
+import { useActionsSelector } from "app/selectors/actions";
 import { setActiveTab } from "app/reducers/actions";
 
 const Content = lazy(() => import("components/Communities/Communities"));
@@ -17,7 +17,7 @@ const Homes = lazy(() => import("components/Homes/Homes"));
 
 const Sections: FC = () => {
   const dispatch = useAppDispatch();
-  const { activeTab } = useActiveTabSelector();
+  const { activeTab } = useActionsSelector();
 
   const selectedTab = (tab: number) => {
     dispatch(setActiveTab(tab));
