@@ -5,7 +5,6 @@ import { useCommunitiesSelector } from "app/selectors/communities";
 import {
   CommunitiesInterface,
   CommunityInterface,
-  Home,
   HomesInterface,
 } from "features/interface";
 import {

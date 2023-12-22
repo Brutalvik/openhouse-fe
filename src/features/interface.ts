@@ -4,6 +4,7 @@ export interface CommunitiesInterface {
   error?: boolean;
   message?: string | undefined;
   status?: number | undefined;
+  moreInfo?: CommunityInterface;
 }
 
 export interface CommunityInterface {
