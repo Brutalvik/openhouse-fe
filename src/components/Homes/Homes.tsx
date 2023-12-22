@@ -1,12 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useAppDispatch } from "app/hooks";
-import { getCommunities } from "app/thunks/getCommunities";
-import {
-  CommunitiesInterface,
-  CommunityInterface,
-  Home,
-  HomesInterface,
-} from "features/interface";
+import { CommunitiesInterface, Home, HomesInterface } from "features/interface";
 import {
   Card,
   CardBody,
@@ -59,7 +53,7 @@ const Homes: FC<CommunitiesInterface> = () => {
     });
 
     setUpdatedHomes(updatedHomesWithUrl);
-  }, [communities, homes]);
+  }, [communities, homes, data]);
 
   const handleMoreInfo = (communityId: string) => {
     const community = communities?.data?.find(
@@ -90,14 +84,13 @@ const Homes: FC<CommunitiesInterface> = () => {
                   <Heading size="md">{type}</Heading>
                   <Text>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Autem consequatur quos quam ex aliquid illum possimus et rem
-                    dolorem deleniti?
+                    Autem
                   </Text>
                   <Text color="blue.600" fontSize="2xl">
                     Price : C${price}
                   </Text>
                   <Text color="green.600" fontSize="2xl">
-                    Area : {area}
+                    Area : {area} Sqft.
                   </Text>
                 </Stack>
               </CardBody>

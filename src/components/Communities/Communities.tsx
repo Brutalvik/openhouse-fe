@@ -2,7 +2,12 @@ import { FC, useEffect, useState } from "react";
 import { useAppDispatch } from "app/hooks";
 import { getCommunities } from "app/thunks/getCommunities";
 import { useCommunitiesSelector } from "app/selectors/communities";
-import { CommunitiesInterface, CommunityInterface } from "features/interface";
+import {
+  CommunitiesInterface,
+  CommunityInterface,
+  Home,
+  HomesInterface,
+} from "features/interface";
 import {
   Card,
   CardBody,
@@ -18,31 +23,77 @@ import {
 } from "@chakra-ui/react";
 import fallbackImage from "assets/noImage.png";
 import { sortByProperty } from "features/functions";
+import { getHomes } from "app/thunks/getHomes";
+import { useHomesSelector } from "app/selectors/homes";
 
 const Communities: FC<CommunitiesInterface> = () => {
   const [brokenImgUrls, setBrokenImgUrls] = useState<string[]>([]);
   const dispatch = useAppDispatch();
   const communities: CommunitiesInterface = useCommunitiesSelector();
+  const homes: HomesInterface = useHomesSelector();
   const { data }: { data?: CommunityInterface[] | undefined } = communities;
+
+  const [updatedCommunities, setUpdatedCommunities] =
+    useState<CommunitiesInterface[]>();
 
   useEffect(() => {
     dispatch(getCommunities() as any);
+    dispatch(getHomes() as any);
+    const updatedCommunity = calculateAveragePrices();
+    setUpdatedCommunities(updatedCommunity as any);
   }, [dispatch]);
 
   const handleBrokenImg = (url: string) => {
     setBrokenImgUrls((prevBrokenUrls) => [...prevBrokenUrls, url]);
   };
 
+  const calculateAveragePrices = () => {
+    const communityPrices: {
+      [key: string]: { totalPrice: number; count: number };
+    } = {};
+
+    // Calculate total prices and counts for each community
+    homes?.data?.forEach((home) => {
+      const { communityId, price } = home;
+      if (!communityPrices[communityId]) {
+        communityPrices[communityId] = { totalPrice: 0, count: 0 };
+      }
+      communityPrices[communityId].totalPrice += price;
+      communityPrices[communityId].count++;
+    });
+
+    // Calculate average prices for each community
+    const communitiesWithAveragePrice = data?.map(
+      (community: CommunityInterface) => {
+        const { id, imgUrl, name, group } = community;
+        const communityId = id;
+        const totalPrice = communityPrices[communityId]?.totalPrice || 0;
+        const count = communityPrices[communityId]?.count || 0;
+        const averagePrice = count > 0 ? totalPrice / count : totalPrice;
+
+        return {
+          id,
+          name,
+          imgUrl,
+          group,
+          avgPrice: averagePrice.toFixed(2),
+        };
+      }
+    );
+
+    return communitiesWithAveragePrice;
+  };
+
   //Sorted Communities
   const sortedCommunities: CommunityInterface[] = sortByProperty<any>(
-    data as any,
+    updatedCommunities as any,
     "group"
   );
 
   return (
     <>
       {sortedCommunities?.map(
-        ({ id, name, imgUrl, group }: CommunityInterface) => (
+        ({ id, name, imgUrl, group, avgPrice }: CommunityInterface) => (
           <GridItem key={id}>
             <Card maxW="sm" variant="elevated">
               <CardBody>
@@ -63,6 +114,9 @@ const Communities: FC<CommunitiesInterface> = () => {
                   </Text>
                   <Text color="blue.600" fontSize="2xl">
                     {group}
+                  </Text>
+                  <Text color="green.600" fontSize="2xl">
+                    Average Price: C${avgPrice}
                   </Text>
                 </Stack>
               </CardBody>

@@ -11,6 +11,7 @@ export interface CommunityInterface {
   name: string;
   imgUrl: string;
   group: string;
+  avgPrice?: number;
 }
 
 export interface TabsInterface {
