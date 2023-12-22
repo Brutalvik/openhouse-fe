@@ -3,7 +3,6 @@ import {
   Tabs,
   TabList,
   TabPanels,
-  TabIndicator,
   Tab,
   TabPanel,
   useBreakpointValue,

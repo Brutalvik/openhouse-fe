@@ -18,6 +18,7 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 import fallbackImage from "assets/noImage.png";
+import { sortByProperty } from "features/functions";
 
 const Communities: FC<CommunitiesInterface> = () => {
   const [brokenImgUrls, setBrokenImgUrls] = useState<string[]>([]);
@@ -34,24 +35,17 @@ const Communities: FC<CommunitiesInterface> = () => {
   };
 
   //Sorted Communities
-  const sortedCommunities = data?.slice().sort((a, b) => {
-    const groupA = a.group.toUpperCase();
-    const groupB = b.group.toUpperCase();
-    if (groupA < groupB) {
-      return -1;
-    }
-    if (groupA > groupB) {
-      return 1;
-    }
-    return 0;
-  });
+  const sortedCommunities: CommunityInterface[] = sortByProperty<any>(
+    data as any,
+    "group"
+  );
 
   return (
     <>
       {sortedCommunities?.map(
         ({ id, name, imgUrl, group }: CommunityInterface) => (
-          <GridItem>
-            <Card maxW="sm" key={id} variant="elevated">
+          <GridItem key={id}>
+            <Card maxW="sm" variant="elevated">
               <CardBody>
                 <Image
                   src={brokenImgUrls.includes(imgUrl) ? fallbackImage : imgUrl}
