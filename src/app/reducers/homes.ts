@@ -8,21 +8,18 @@ const initialState = {
   status: undefined,
 };
 
-const communities = createSlice({
-  name: "communities",
+const homes = createSlice({
+  name: "homes",
   initialState,
   reducers: {
-    communitiesFetchSuccess: (state, { payload }: PayloadAction<any>) => {
+    homesFetchSuccess: (state, { payload }: PayloadAction<any>) => {
       state.data = payload.data;
       state.status = payload.status;
     },
-    communitiesFetchInProgress: (
-      state,
-      { payload }: PayloadAction<boolean>
-    ) => {
+    homesFetchInProgress: (state, { payload }: PayloadAction<boolean>) => {
       state.isLoading = payload;
     },
-    communitiesFetchFailed: (state, { payload }: PayloadAction<any>) => {
+    homesFetchFailed: (state, { payload }: PayloadAction<any>) => {
       state.error = payload.error;
       state.message = payload.message;
       state.status = payload.status;
@@ -30,10 +27,7 @@ const communities = createSlice({
   },
 });
 
-export const {
-  communitiesFetchSuccess,
-  communitiesFetchInProgress,
-  communitiesFetchFailed,
-} = communities.actions;
+export const { homesFetchFailed, homesFetchInProgress, homesFetchSuccess } =
+  homes.actions;
 
-export default communities.reducer;
+export default homes.reducer;

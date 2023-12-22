@@ -5,7 +5,6 @@ import { useCommunitiesSelector } from "app/selectors/communities";
 import { CommunitiesInterface, CommunityInterface } from "features/interface";
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Stack,
@@ -24,7 +23,7 @@ const Communities: FC<CommunitiesInterface> = () => {
   const [brokenImgUrls, setBrokenImgUrls] = useState<string[]>([]);
   const dispatch = useAppDispatch();
   const communities: CommunitiesInterface = useCommunitiesSelector();
-  const { data }: { data?: CommunityInterface[] | null } = communities;
+  const { data }: { data?: CommunityInterface[] | undefined } = communities;
 
   useEffect(() => {
     dispatch(getCommunities() as any);
@@ -51,8 +50,8 @@ const Communities: FC<CommunitiesInterface> = () => {
                   src={brokenImgUrls.includes(imgUrl) ? fallbackImage : imgUrl}
                   alt="image"
                   onError={() => handleBrokenImg(imgUrl)}
-                  w="100%" // Adjust the width as needed
-                  h="200px" // Adjust the height as needed
+                  w="100%"
+                  h="200px"
                   objectFit="cover"
                 />
                 <Stack mt="6" spacing="3">

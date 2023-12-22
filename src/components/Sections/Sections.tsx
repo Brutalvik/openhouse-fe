@@ -13,6 +13,7 @@ import { useActiveTabSelector } from "app/selectors/actions";
 import { setActiveTab } from "app/reducers/actions";
 
 const Content = lazy(() => import("components/Communities/Communities"));
+const Homes = lazy(() => import("components/Homes/Homes"));
 
 const Sections: FC = () => {
   const dispatch = useAppDispatch();
@@ -61,7 +62,13 @@ const Sections: FC = () => {
           </Grid>
         </TabPanel>
         <TabPanel>
-          <p>two!</p>
+          <Grid
+            templateColumns={`repeat(${columnCount}, 1fr)`}
+            gap={6}
+            {...margins}
+          >
+            <Homes />
+          </Grid>
         </TabPanel>
       </TabPanels>
     </Tabs>

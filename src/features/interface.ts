@@ -1,9 +1,9 @@
 export interface CommunitiesInterface {
-  data?: CommunityInterface[] | null;
+  data?: CommunityInterface[] | undefined;
   isLoading?: boolean;
   error?: boolean;
-  message?: string | null;
-  status?: number | null;
+  message?: string | undefined;
+  status?: number | undefined;
 }
 
 export interface CommunityInterface {
@@ -15,4 +15,21 @@ export interface CommunityInterface {
 
 export interface TabsInterface {
   activeTab: number;
+}
+
+export interface Home {
+  id: string;
+  communityId: string;
+  price: number;
+  area: number;
+  type: string;
+  imgUrl?: string;
+}
+
+export interface HomesInterface {
+  data?: Home[] | undefined;
+  isLoading?: boolean;
+  error?: boolean;
+  message?: string | undefined;
+  status?: string | undefined;
 }

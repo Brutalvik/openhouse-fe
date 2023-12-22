@@ -18,8 +18,10 @@ export const getCommunities = createAsyncThunk(
         COMMUNITIES_URL
       );
       dispatch(communitiesFetchSuccess({ data, status }));
+      dispatch(communitiesFetchInProgress(false));
     } catch (error) {
       console.log(error);
+      dispatch(communitiesFetchInProgress(false));
     }
   }
 );
