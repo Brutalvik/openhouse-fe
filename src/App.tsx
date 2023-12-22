@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import styles from "App.module.css";
+// import styles from "App.module.css";
 
 import CustomSpinner from "components/Customspinner/Customspinner";
 
@@ -7,7 +7,7 @@ const Home = lazy(() => import("components/Home/Home"));
 
 const App = () => {
   return (
-    <div className={styles.app}>
+    <div>
       <Suspense fallback={<CustomSpinner />}>
         <Home />
       </Suspense>
