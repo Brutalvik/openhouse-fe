@@ -33,46 +33,61 @@ const Content: FC<CommunitiesInterface> = () => {
     setBrokenImgUrls((prevBrokenUrls) => [...prevBrokenUrls, url]);
   };
 
+  //Sorted Communities
+  const sortedCommunities = data?.slice().sort((a, b) => {
+    const groupA = a.group.toUpperCase();
+    const groupB = b.group.toUpperCase();
+    if (groupA < groupB) {
+      return -1;
+    }
+    if (groupA > groupB) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
     <>
-      {data?.map(({ id, name, imgUrl, group }: CommunityInterface) => (
-        <GridItem>
-          <Card maxW="sm" key={id}>
-            <CardBody>
-              <Image
-                src={brokenImgUrls.includes(imgUrl) ? fallbackImage : imgUrl}
-                alt="image"
-                onError={() => handleBrokenImg(imgUrl)}
-                w="100%" // Adjust the width as needed
-                h="200px" // Adjust the height as needed
-                objectFit="cover"
-              />
-              <Stack mt="6" spacing="3">
-                <Heading size="md">{name}</Heading>
-                <Text>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  consequatur quos quam ex aliquid illum possimus et rem dolorem
-                  deleniti?
-                </Text>
-                <Text color="blue.600" fontSize="2xl">
-                  {group}
-                </Text>
-              </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter>
-              <ButtonGroup spacing="2">
-                <Button variant="solid" colorScheme="blue">
-                  More Info
-                </Button>
-                <Button variant="ghost" colorScheme="blue">
-                  Location
-                </Button>
-              </ButtonGroup>
-            </CardFooter>
-          </Card>
-        </GridItem>
-      ))}
+      {sortedCommunities?.map(
+        ({ id, name, imgUrl, group }: CommunityInterface) => (
+          <GridItem>
+            <Card maxW="sm" key={id} variant="elevated">
+              <CardBody>
+                <Image
+                  src={brokenImgUrls.includes(imgUrl) ? fallbackImage : imgUrl}
+                  alt="image"
+                  onError={() => handleBrokenImg(imgUrl)}
+                  w="100%" // Adjust the width as needed
+                  h="200px" // Adjust the height as needed
+                  objectFit="cover"
+                />
+                <Stack mt="6" spacing="3">
+                  <Heading size="md">{name}</Heading>
+                  <Text>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Autem consequatur quos quam ex aliquid illum possimus et rem
+                    dolorem deleniti?
+                  </Text>
+                  <Text color="blue.600" fontSize="2xl">
+                    {group}
+                  </Text>
+                </Stack>
+              </CardBody>
+              <Divider />
+              <CardFooter>
+                <ButtonGroup spacing="2">
+                  <Button variant="solid" colorScheme="blue">
+                    More Info
+                  </Button>
+                  <Button variant="ghost" colorScheme="blue">
+                    Location
+                  </Button>
+                </ButtonGroup>
+              </CardFooter>
+            </Card>
+          </GridItem>
+        )
+      )}
     </>
   );
 };
