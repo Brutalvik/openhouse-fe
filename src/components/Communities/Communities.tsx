@@ -24,6 +24,7 @@ import fallbackImage from "assets/noImage.png";
 import { sortByProperty } from "features/functions";
 import { getHomes } from "app/thunks/getHomes";
 import { useHomesSelector } from "app/selectors/homes";
+import { setModalOpen } from "app/reducers/actions";
 
 const Communities: FC<CommunitiesInterface> = () => {
   const [brokenImgUrls, setBrokenImgUrls] = useState<string[]>([]);
@@ -122,7 +123,11 @@ const Communities: FC<CommunitiesInterface> = () => {
               <Divider />
               <CardFooter>
                 <ButtonGroup spacing="2">
-                  <Button variant="solid" colorScheme="blue">
+                  <Button
+                    variant="solid"
+                    colorScheme="blue"
+                    onClick={() => dispatch(setModalOpen(true))}
+                  >
                     More Info
                   </Button>
                   <Button variant="ghost" colorScheme="blue">
