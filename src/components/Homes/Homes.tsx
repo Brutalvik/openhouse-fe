@@ -45,7 +45,7 @@ const Homes: FC<CommunitiesInterface> = () => {
         duration: 9000,
         isClosable: true,
       });
-  }, [error, toast]);
+  }, [error, toast, message, status]);
 
   const handleBrokenImg = (url: string) => {
     setBrokenImgUrls((prevBrokenUrls) => [...prevBrokenUrls, url]);

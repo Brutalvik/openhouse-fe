@@ -50,13 +50,14 @@ const Communities: FC<CommunitiesInterface> = () => {
         duration: 9000,
         isClosable: true,
       });
-  }, [error, toast]);
+  }, [error, toast, message, status]);
 
   useEffect(() => {
     dispatch(getCommunities() as any);
     dispatch(getHomes() as any);
     const updatedCommunity = calculateAveragePrices();
     setUpdatedCommunities(updatedCommunity as any);
+    // eslint-disable-next-line
   }, [dispatch]);
 
   const handleBrokenImg = (url: string) => {

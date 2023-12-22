@@ -1,4 +1,4 @@
-import { FC, lazy, Suspense, useEffect } from "react";
+import { FC, lazy, Suspense } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import CustomSpinner from "components/Customspinner/Customspinner";
 
