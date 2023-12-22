@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import fallbackImage from "assets/noImage.png";
 
-const Content: FC<CommunitiesInterface> = () => {
+const Communities: FC<CommunitiesInterface> = () => {
   const [brokenImgUrls, setBrokenImgUrls] = useState<string[]>([]);
   const dispatch = useAppDispatch();
   const communities: CommunitiesInterface = useCommunitiesSelector();
@@ -92,4 +92,4 @@ const Content: FC<CommunitiesInterface> = () => {
   );
 };
 
-export default Content;
+export default Communities;
