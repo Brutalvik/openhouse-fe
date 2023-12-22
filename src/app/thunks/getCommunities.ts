@@ -4,6 +4,7 @@ import {
   communitiesFetchInProgress,
   communitiesFetchSuccess,
   communitiesFetchFailed,
+  resetCommunities,
 } from "app/reducers/communities";
 import { CommunitiesInterface } from "features/interface";
 
@@ -14,13 +15,15 @@ export const getCommunities = createAsyncThunk(
   async (_, { dispatch }) => {
     dispatch(communitiesFetchInProgress(true));
     try {
+      dispatch(resetCommunities());
       const { data, status }: CommunitiesInterface = await axios.get(
         COMMUNITIES_URL
       );
       dispatch(communitiesFetchSuccess({ data, status }));
       dispatch(communitiesFetchInProgress(false));
-    } catch (error) {
-      console.log(error);
+    } catch ({ response }: any) {
+      dispatch(resetCommunities());
+      dispatch(communitiesFetchFailed(response));
       dispatch(communitiesFetchInProgress(false));
     }
   }

@@ -19,6 +19,7 @@ import {
   Button,
   Image,
   GridItem,
+  useToast,
 } from "@chakra-ui/react";
 import fallbackImage from "assets/noImage.png";
 import { sortByProperty } from "features/functions";
@@ -35,6 +36,21 @@ const Communities: FC<CommunitiesInterface> = () => {
 
   const [updatedCommunities, setUpdatedCommunities] =
     useState<CommunitiesInterface[]>();
+
+  const toast = useToast();
+  const { error, message, status } = communities;
+
+  useEffect(() => {
+    toast.closeAll();
+    error &&
+      toast({
+        title: `Error ${status}`,
+        description: message,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+  }, [error, toast]);
 
   useEffect(() => {
     dispatch(getCommunities() as any);

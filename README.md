@@ -14,33 +14,50 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+## DEV NOTES
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## NOTE --> ERRORS can be tested by manipulating the API's in app/thunks folder.
 
-### `npm run build`
+## Future Improvements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Given more time, there are several areas where the application could be enhanced to improve its overall quality, performance, and user experience. Some of the key areas for improvement include:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Enhanced Testing Strategies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Implement additional unit tests, integration tests, and end-to-end tests to cover a wider range of scenarios. Utilize testing frameworks like Jest and Cypress to ensure robust test coverage and improve the reliability of the application.
 
-### `npm run eject`
+### Code Refactoring for Maintainability
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Refactor complex code segments to enhance readability and maintainability. Specifically, focus on optimizing algorithms and modularizing code components to make future modifications easier and more efficient.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Performance Optimization
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Optimize database queries and introduce caching mechanisms to improve response times. Implement server-side optimizations and explore lazy loading techniques to enhance overall performance, especially for resource-intensive features.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Strengthened Security Measures
 
-## Learn More
+Enhance security by implementing stringent data validation, encryption techniques, and input sanitization to protect against potential security vulnerabilities. Incorporate security best practices to safeguard user data.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Improved Error Handling and Logging
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Implement comprehensive error handling mechanisms and integrate robust logging solutions. Enhanced error tracking and monitoring will assist in diagnosing issues quickly, enabling timely resolution and improved application stability.
+
+### Documentation Updates
+
+Expand comprehensive documentation including inline code comments, README updates, and API documentation. Ensuring up-to-date and detailed documentation will facilitate ease of understanding and maintainability.
+
+### User Experience (UX/UI) Enhancements
+
+Collect user feedback and iteratively improve the user interface to enhance usability and engagement. Implement design improvements based on usability studies and user testing results.
+
+### Scalability and Future Expansion
+
+Prepare the application for scalability by optimizing infrastructure and adopting a more scalable architecture. Plan for future feature expansions to meet evolving user needs.
+
+### Compliance and Regulations
+
+Ensure compliance with industry standards and regulations, incorporating necessary measures for data protection, accessibility, and compliance with relevant laws.
+
+### Feedback and Iteration
+
+Continuously gather feedback from users and stakeholders to iteratively improve the application. Regularly update and refine features based on received feedback to ensure alignment with user expectations.

@@ -4,7 +4,7 @@ const initialState = {
   data: undefined,
   isLoading: false,
   error: false,
-  message: undefined,
+  message: "",
   status: undefined,
 };
 
@@ -20,14 +20,21 @@ const homes = createSlice({
       state.isLoading = payload;
     },
     homesFetchFailed: (state, { payload }: PayloadAction<any>) => {
-      state.error = payload.error;
-      state.message = payload.message;
+      state.error = true;
+      state.message = "Error loading homes !";
       state.status = payload.status;
+    },
+    resetHomes: () => {
+      return { ...initialState };
     },
   },
 });
 
-export const { homesFetchFailed, homesFetchInProgress, homesFetchSuccess } =
-  homes.actions;
+export const {
+  homesFetchFailed,
+  homesFetchInProgress,
+  homesFetchSuccess,
+  resetHomes,
+} = homes.actions;
 
 export default homes.reducer;

@@ -18,7 +18,7 @@ export const sortByProperty = <T extends Record<string, string>>(
 
 //Sort by type
 export const sortByType = <T extends { type: string }>(data: T[]): T[] => {
-  return data.slice().sort((a, b) => {
+  return data?.slice().sort((a, b) => {
     const typeA = a.type.toUpperCase();
     const typeB = b.type.toUpperCase();
 

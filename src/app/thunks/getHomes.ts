@@ -4,6 +4,7 @@ import {
   homesFetchSuccess,
   homesFetchFailed,
   homesFetchInProgress,
+  resetHomes,
 } from "app/reducers/homes";
 import { CommunitiesInterface } from "features/interface";
 
@@ -14,11 +15,13 @@ export const getHomes = createAsyncThunk(
   async (_, { dispatch }) => {
     dispatch(homesFetchInProgress(true));
     try {
+      dispatch(resetHomes());
       const { data, status }: CommunitiesInterface = await axios.get(HOMES_URL);
       dispatch(homesFetchSuccess({ data, status }));
       dispatch(homesFetchInProgress(false));
-    } catch (error) {
-      console.log(error);
+    } catch ({ response }: any) {
+      dispatch(resetHomes());
+      dispatch(homesFetchFailed(response));
       dispatch(homesFetchInProgress(false));
     }
   }

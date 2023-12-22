@@ -13,6 +13,7 @@ import {
   Button,
   Image,
   GridItem,
+  useToast,
 } from "@chakra-ui/react";
 import { useHomesSelector } from "app/selectors/homes";
 import { sortByType } from "features/functions";
@@ -30,6 +31,21 @@ const Homes: FC<CommunitiesInterface> = () => {
 
   const [brokenImgUrls, setBrokenImgUrls] = useState<string[]>([]);
   const [updatedHomes, setUpdatedHomes] = useState<Home[]>([]);
+
+  const toast = useToast();
+  const { error, message, status } = homes;
+
+  useEffect(() => {
+    toast.closeAll();
+    error &&
+      toast({
+        title: `Error ${status}`,
+        description: message,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+  }, [error, toast]);
 
   const handleBrokenImg = (url: string) => {
     setBrokenImgUrls((prevBrokenUrls) => [...prevBrokenUrls, url]);

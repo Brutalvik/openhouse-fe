@@ -1,9 +1,9 @@
 export interface CommunitiesInterface {
-  data?: CommunityInterface[] | undefined;
+  data?: CommunityInterface[];
   isLoading?: boolean;
   error?: boolean;
-  message?: string | undefined;
-  status?: number | undefined;
+  message?: any;
+  status?: number;
   moreInfo?: CommunityInterface;
 }
 

@@ -1,7 +1,6 @@
-import { FC, lazy, Suspense } from "react";
+import { FC, lazy, Suspense, useEffect } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import CustomSpinner from "components/Customspinner/Customspinner";
-import { useActionsSelector } from "app/selectors/actions";
 
 const Header = lazy(() => import("components/Header/Header"));
 
