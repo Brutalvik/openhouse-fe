@@ -12,3 +12,7 @@ export interface CommunityInterface {
   imgUrl: string;
   group: string;
 }
+
+export interface TabsInterface {
+  activeTab: number;
+}

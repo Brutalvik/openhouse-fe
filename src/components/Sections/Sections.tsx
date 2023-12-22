@@ -3,15 +3,26 @@ import {
   Tabs,
   TabList,
   TabPanels,
+  TabIndicator,
   Tab,
   TabPanel,
   useBreakpointValue,
   Grid,
 } from "@chakra-ui/react";
+import { useAppDispatch } from "app/hooks";
+import { useActiveTabSelector } from "app/selectors/actions";
+import { setActiveTab } from "app/reducers/actions";
 
 const Content = lazy(() => import("components/Communities/Communities"));
 
 const Sections: FC = () => {
+  const dispatch = useAppDispatch();
+  const { activeTab } = useActiveTabSelector();
+
+  const selectedTab = (tab: number) => {
+    dispatch(setActiveTab(tab));
+  };
+
   const columnCount = useBreakpointValue({
     sm: 1,
     md: 3,
@@ -28,10 +39,17 @@ const Sections: FC = () => {
   });
 
   return (
-    <Tabs isFitted variant="enclosed" size="lg">
+    <Tabs
+      isFitted
+      variant="enclosed"
+      size="lg"
+      isLazy
+      onChange={(index) => selectedTab(index)}
+      defaultIndex={activeTab}
+    >
       <TabList mb="1em">
-        <Tab>Communities</Tab>
-        <Tab>Houses</Tab>
+        <Tab _selected={{ color: "white", bg: "blue.500" }}>Communities</Tab>
+        <Tab _selected={{ color: "white", bg: "blue.500" }}>Houses</Tab>
       </TabList>
       <TabPanels>
         <TabPanel>
