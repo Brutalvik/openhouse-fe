@@ -18,46 +18,38 @@ You will also see any lint errors in the console.
 
 ## NOTE --> ERRORS can be tested by manipulating the API's in app/thunks folder.
 
-## Future Improvements
+## Overview
 
-Given more time, there are several areas where the application could be enhanced to improve its overall quality, performance, and user experience. Some of the key areas for improvement include:
+This application was developed using React as the frontend framework, coupled with Redux and Redux Toolkit for state management. Chakra UI was chosen as the primary UI library for its simplicity and ease of customization. Due to the application's minimal navigation requirements, React Router DOM was not utilized.
 
-### Enhanced Testing Strategies
+### Technology Stack
 
-Implement additional unit tests, integration tests, and end-to-end tests to cover a wider range of scenarios. Utilize testing frameworks like Jest and Cypress to ensure robust test coverage and improve the reliability of the application.
+- Frontend: React with Redux and Redux Toolkit
+- UI Library: Chakra UI
+- TypeScript: tsconfig.json was configured to support absolute imports
+- Theming: Chakra UI theme was utilized to manage dark/light mode
+- State Persistence: Redux Persist was integrated to maintain app state persistence
 
-### Code Refactoring for Maintainability
+### Features Implemented
 
-Refactor complex code segments to enhance readability and maintainability. Specifically, focus on optimizing algorithms and modularizing code components to make future modifications easier and more efficient.
+- **Custom Spinner:** A custom spinner was incorporated to indicate loading states during API requests.
+- **Basic Error Handling:** Given the limited response codes (only 404 in this scenario), basic error handling was implemented. Error states were demonstrated by hardcoded scenarios in the failure responses. Manipulating the API in the thunks can help simulate different error scenarios for testing purposes.
 
-### Performance Optimization
+### Additional Notes
 
-Optimize database queries and introduce caching mechanisms to improve response times. Implement server-side optimizations and explore lazy loading techniques to enhance overall performance, especially for resource-intensive features.
+- **Navigation Requirements:** React Router DOM was omitted due to the application's small size and lack of navigation complexities.
+- **Hardcoded Error Handling:** Minor hardcoded error handling was implemented for demonstration purposes. Actual error handling would be more comprehensive and dynamic based on various API responses.
+- **Limitations:** The application's functionalities were limited due to the restricted dataset. However, several potential enhancements could be implemented.
 
-### Strengthened Security Measures
+## Potential Improvements
 
-Enhance security by implementing stringent data validation, encryption techniques, and input sanitization to protect against potential security vulnerabilities. Incorporate security best practices to safeguard user data.
+Given more time or an expanded dataset, the application could be further improved in several areas:
 
-### Improved Error Handling and Logging
+- **Enhanced Testing:** Implement additional unit tests, integration tests, and end-to-end tests for improved code coverage and reliability.
+- **Performance Optimization:** Optimize database queries, introduce caching, and explore lazy loading to enhance performance.
+- **Security Measures:** Strengthen security with enhanced validation, encryption, and compliance with data protection standards.
+- **Error Handling and Logging:** Improve error tracking, monitoring, and implement comprehensive error handling mechanisms.
+- **User Experience (UX/UI):** Gather user feedback to enhance the UI/UX and implement design improvements.
+- **Scalability and Expansion:** Prepare for scalability by optimizing infrastructure and architecture for future expansions.
 
-Implement comprehensive error handling mechanisms and integrate robust logging solutions. Enhanced error tracking and monitoring will assist in diagnosing issues quickly, enabling timely resolution and improved application stability.
-
-### Documentation Updates
-
-Expand comprehensive documentation including inline code comments, README updates, and API documentation. Ensuring up-to-date and detailed documentation will facilitate ease of understanding and maintainability.
-
-### User Experience (UX/UI) Enhancements
-
-Collect user feedback and iteratively improve the user interface to enhance usability and engagement. Implement design improvements based on usability studies and user testing results.
-
-### Scalability and Future Expansion
-
-Prepare the application for scalability by optimizing infrastructure and adopting a more scalable architecture. Plan for future feature expansions to meet evolving user needs.
-
-### Compliance and Regulations
-
-Ensure compliance with industry standards and regulations, incorporating necessary measures for data protection, accessibility, and compliance with relevant laws.
-
-### Feedback and Iteration
-
-Continuously gather feedback from users and stakeholders to iteratively improve the application. Regularly update and refine features based on received feedback to ensure alignment with user expectations.
+Please note that this is not an exhaustive list, and there are numerous other enhancements that could be made based on the application's needs and objectives.
